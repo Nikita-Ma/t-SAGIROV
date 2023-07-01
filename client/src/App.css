@@ -162,7 +162,9 @@ body {
     width: 185px;
     height: 185px;
 }
-
+.box-editor-inner input {
+    max-width: 185px;
+}
 .nav-list__item-editor  {
     width: 150px;
 }

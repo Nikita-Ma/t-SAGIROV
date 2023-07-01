@@ -1,6 +1,6 @@
 import './App.css';
 import logo from './img/logo.png';
-import {useState} from "react"; // Tell webpack this JS file uses this image
+import {useEffect, useState} from "react"; // Tell webpack this JS file uses this image
 
 function App() {
 
@@ -65,6 +65,27 @@ function App() {
         }
     ])
 
+
+    const [save, setSave] = useState(false)
+
+    useEffect(() => {
+
+        const fetchData = async () => {
+            const reqData = await fetch('http://127.0.0.1:8000/api/main', {
+                method: "POST",
+                body: JSON.stringify([navValue, cardValue]),
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8', // Set the content type to JSON if required
+                },
+            })
+            const pendJSON = await reqData.json()
+            setNavValue(pendJSON[0])
+            setCardValue(pendJSON[1])
+        }
+        fetchData()
+    }, [save])
+
+
     const handlerInput = (e) => {
         const {name, value} = e.target;
         if (name.split('-')[0] === 'nav') {
@@ -97,7 +118,9 @@ function App() {
         }
 
     }
-
+    const handlerClickedSave = () => {
+        setSave(!save)
+    }
 
     if (window.location.pathname !== '/admin') {
         return (
@@ -205,6 +228,9 @@ function App() {
         // * Admin Panel
         return (
             <>
+                  <div className="save-panel" style={{position: "absolute", right: 0}}>
+                                <button onClick={handlerClickedSave}>Save</button>
+                            </div>
                 <div className="App">
                     <main className="main">
                         <div className="container">
