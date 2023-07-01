@@ -5,6 +5,7 @@ test task junior+\middle full stack
 * Cut Mars and create normal layout page (Mars after text)
 * Create mobile design
 * Add hover and center pos on ADM Panel
+* Rename input first instead main, tech and etc
 * Fonts:
 Jos Buivenga
 

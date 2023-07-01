@@ -1,7 +1,104 @@
 import './App.css';
-import logo from './img/logo.png'; // Tell webpack this JS file uses this image
+import logo from './img/logo.png';
+import {useState} from "react"; // Tell webpack this JS file uses this image
 
 function App() {
+
+    const [navValue, setNavValue] = useState([
+        {
+            title: 'nav-main',
+            text: 'Главная',
+            link: '#'
+        },
+        {
+            title: 'nav-tech',
+            text: 'Технология',
+            link: '#'
+        },
+        {
+            title: 'nav-graph',
+            text: 'График полетов',
+            link: '#'
+        },
+        {
+            title: 'nav-grant',
+            text: 'Гарантии',
+            link: '#'
+        },
+        {
+            title: 'nav-about',
+            text: 'О компании',
+            link: '#'
+        },
+        {
+            title: 'nav-contact',
+            text: 'Контакты',
+            link: '#'
+        }
+    ])
+
+
+    const [cardValue, setCardValue] = useState([
+        {
+            title: 'card-shop',
+            topText: 'Мы',
+            num: '1',
+            bottomText: 'на рынке'
+        },
+        {
+            title: 'card-grant',
+            topText: 'Гарантируем',
+            num: '50%',
+            bottomText: 'безопастность'
+        },
+        {
+            title: 'card-cal',
+            topText: 'календарики',
+            num: '2001',
+            bottomText: 'в подарок'
+        },
+        {
+            title: 'card-travel',
+            topText: 'путешествие',
+            num: '597',
+            bottomText: 'дней'
+        }
+    ])
+
+    const handlerInput = (e) => {
+        const {name, value} = e.target;
+        if (name.split('-')[0] === 'nav') {
+            const idx = navValue.findIndex((item) => item.title === name)
+            const elArr = navValue[idx]
+            const inpValue = value.split('!')
+            elArr.text = inpValue[0]
+            elArr.link = inpValue[1]
+            elArr.title = name
+            const newArrayNav = navValue
+            newArrayNav[idx] = elArr
+            setNavValue(prevFormData => {
+                return [
+                    ...newArrayNav
+                ]
+            });
+        } else {
+            const idx = cardValue.findIndex((item) => item.title === name.split('!')[0])
+            const elArr = cardValue[idx]
+            elArr.topText = name.split('!')[1] === "top" ? value : elArr.topText
+            elArr.num = name.split('!')[1] === "num" ? value : elArr.num
+            elArr.bottomText = name.split('!')[1] === "bottom" ? value : elArr.bottomText
+            const newArrayNav = cardValue
+            newArrayNav[idx] = elArr
+            setCardValue(prevFormData => {
+                return [
+                    ...newArrayNav
+                ]
+            });
+        }
+
+    }
+
+
     if (window.location.pathname !== '/admin') {
         return (
             <div className="App">
@@ -36,8 +133,7 @@ function App() {
                                         </li>
                                         <li className="nav-list__item">
                                             <a className="menu__list-link" href="#">
-                                                О
-                                                компаии
+                                                О компании
                                             </a></li>
                                         <li className="nav-list__item">
                                             <a className="menu__list-link" href="#">
@@ -118,27 +214,18 @@ function App() {
 
                                     <nav className="nav">
                                         <ul className="nav-list">
-                                            <li className="nav-list__item nav-list__item-editor">
-                                                <input className="menu__list-link" value='Главная'/>
-                                            </li>
-                                            <li className="nav-list__item nav-list__item-editor">
-                                                <input className="menu__list-link" value='Технология'/>
-                                            </li>
-                                            <li className="nav-list__item nav-list__item-editor">
-                                                <input className="menu__list-link" value=' График
-                                                    полетов'/>
 
-                                            </li>
-                                            <li className="nav-list__item nav-list__item-editor">
-                                                <input className="menu__list-link" value='Гарантии'/>
-                                            </li>
-                                            <li className="nav-list__item nav-list__item-editor">
-                                                <input className="menu__list-link" value=' О
-                                                    компаии'/>
-                                            </li>
-                                            <li className="nav-list__item nav-list__item-editor">
-                                                <input className="menu__list-link" value='Контакты'/>
-                                            </li>
+                                            {
+                                                navValue.map((item) => {
+                                                    return (<li className="nav-list__item nav-list__item-editor">
+                                                        <input className="menu__list-link"
+                                                               name={item.title}
+                                                               value={item.text + '!' + item.link}
+                                                               onChange={handlerInput}
+                                                               placeholder={'Enter Text!Link..'}/>
+                                                    </li>)
+                                                })
+                                            }
                                         </ul>
                                     </nav>
                                 </div>
@@ -156,43 +243,32 @@ function App() {
                                     </div>
                                     <div className="about-desc">
                                         <div className="desc">
-                                            <div className="box-editor">
-                                                <div className="box-editor-inner">
-                                                    <input className="box__text box__text--top" value="Мы"/>
-                                                    <input
-                                                        className="input-editor box__number-center" value="1"/>
-                                                    <input
-                                                        className="box__text box__text--bottom" value="на рынке"/>
-                                                </div>
-                                            </div>
 
-                                            <div className="box-editor">
-                                                <div className="box-editor-inner">
-                                                    <input className="box__text box__text--top" value="Гарантируем"/>
-                                                    <input
-                                                        className="input-editor box__number-center" value="50%"/>
-                                                    <input
-                                                        className="box__text box__text--bottom" value="безопастность"/>
-                                                </div>
-                                            </div>
-                                            <div className="box-editor">
-                                                <div className="box-editor-inner">
-                                                    <input className="box__text box__text--top" value="календарики"/>
-                                                    <input
-                                                        className="input-editor box__number-center" value="2001"/>
-                                                    <input
-                                                        className="box__text box__text--bottom" value="в подарок"/>
-                                                </div>
-                                            </div>
-                                            <div className="box-editor">
-                                                <div className="box-editor-inner">
-                                                    <input className="box__text box__text--top" value="путешествие"/>
-                                                    <input
-                                                        className="input-editor box__number-center" value="597"/>
-                                                    <input
-                                                        className="box__text box__text--bottom" value="дней"/>
-                                                </div>
-                                            </div>
+                                            {
+                                                (cardValue.map((item) => {
+                                                    return (
+                                                        <div className="box-editor">
+                                                            <div className="box-editor-inner">
+                                                                <input className="box__text box__text--top"
+                                                                       name={item.title + '!top'}
+                                                                       onChange={handlerInput}
+                                                                       value={item.topText}/>
+                                                                <input
+                                                                    className="input-editor box__number-center"
+                                                                    name={item.title + '!num'}
+                                                                    value={item.num}
+                                                                    onChange={handlerInput}
+                                                                />
+                                                                <input
+                                                                    className="box__text box__text--bottom"
+                                                                    name={item.title + '!bottom'}
+                                                                    onChange={handlerInput}
+                                                                    value={item.bottomText}/>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                }))
+                                            }
                                         </div>
                                     </div>
                                 </div>
