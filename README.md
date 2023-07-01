@@ -4,7 +4,8 @@ test task junior+\middle full stack
 * Rewrite (IMPORTANT FOR "btn-travel" el) border on css without bgImg (posAbs, posRel, r0 bgImg etc)
 * Cut Mars and create normal layout page (Mars after text)
 * Create mobile design
-# Fonts:
+* Add hover and center pos on ADM Panel
+* Fonts:
 Jos Buivenga
 
 http://www.exljbris.com

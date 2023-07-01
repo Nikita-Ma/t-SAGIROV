@@ -104,10 +104,12 @@ body {
     flex-wrap: wrap;
     max-width: 390px;
 }
+
 .box {
     position: relative;
     cursor: pointer;
 }
+
 .box-inner {
     display: flex;
     flex-direction: column;
@@ -127,7 +129,7 @@ body {
     opacity: 0.031;
     background-color: white;
     transition: opacity 0.3s ease;
-    background: linear-gradient(to right,  rgba(255,255,255, 0.031),  rgba(255,255,255, 0.9));
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.031), rgba(255, 255, 255, 0.9));
 }
 
 .box:hover::before {
@@ -151,7 +153,20 @@ body {
     font-size: 60px;
     line-height: 1.2;
     font-family: "Mauseo Bold", sans-serif;;
-
 }
+
+.box-editor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 185px;
+    height: 185px;
+}
+
+.nav-list__item-editor  {
+    width: 150px;
+}
+
+
 
 

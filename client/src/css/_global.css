@@ -343,6 +343,12 @@ a {
     text-decoration: none;
     color: inherit;
 }
+input {
+    background: none;
+    outline: none;
+    border: none;
+    color: inherit;
+}
 /**
  * Add the correct display in IE 10.
  */
