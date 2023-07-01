@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "Mauseo Thin";
+    src: local("GoldmanBold"),
+    url("../fonts/MuseoSansCyrl100.ttf") format("truetype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Mauseo Light";
+    src: local("GoldmanBold"),
+    url("../fonts/MuseoSansCyrl300.ttf") format("truetype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Mauseo Bold";
+    src: local("GoldmanBold"),
+    url("../fonts/MuseoSansCyrl700.ttf") format("truetype");
+    font-weight: normal;
+}

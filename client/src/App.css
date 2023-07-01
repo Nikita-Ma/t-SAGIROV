@@ -1,38 +1,157 @@
+@import "css/_global.css";
+@import "css/_fonts.css";
+
+body {
+    color: white;
+}
+
 .App {
-  text-align: center;
+    background-image: url('./img/bg-pic.jpg');
+    min-height: 660px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.nav-list {
+    font-family: "Mauseo Light", sans-serif;
+    line-height: 22px;
+    display: flex;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-list .nav-list__item {
+    font-size: 16px;
+    cursor: pointer;
+    padding-bottom: 11px;
+    border-bottom: 1px solid transparent;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-list__item + .nav-list__item {
+    margin-left: 40px;
 }
+
+.nav-list .nav-list__item:hover {
+    border-bottom: 1px solid white;
+}
+
+/*
+* ABOUT
+*/
+
+.about {
+    margin-top: 70px;
+}
+
+.about-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-title {
+    margin-top: 50px;
+}
+
+.title {
+    background: linear-gradient(to left, #ff3f04 0%, #ffffff 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    line-height: 1.2;
+    font-family: "Mauseo Bold", sans-serif;
+    font-size: 58px;
+}
+
+.subtitle {
+    background: linear-gradient(to left, #ff3f04 0%, #ffffff 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 25px;
+}
+
+.btn-travel {
+    cursor: pointer;
+    margin-top: 90px;
+    display: block;
+    padding: 0;
+    font-size: 14px;
+    font-family: "Mauseo Thin", sans-serif;
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+    color: white;
+    opacity: 0.7;
+    background: none;
+    outline: none;
+    border: none;
+    background-image: url("./img/btn-border.png");
+    width: 215px;
+    height: 65px;
+}
+
+.desc {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 390px;
+}
+.box {
+    position: relative;
+    cursor: pointer;
+}
+.box-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 185px;
+    height: 185px;
+}
+
+.box::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 165px;
+    height: 175px;
+    opacity: 0.031;
+    background-color: white;
+    transition: opacity 0.3s ease;
+    background: linear-gradient(to right,  rgba(255,255,255, 0.031),  rgba(255,255,255, 0.9));
+}
+
+.box:hover::before {
+    opacity: 0.149;
+}
+
+.box:nth-child(2n) {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.box__text {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 1.2;
+    font-family: "Mauseo Thin", sans-serif;;
+}
+
+.box__number-center {
+    display: inline-block;
+    font-size: 60px;
+    line-height: 1.2;
+    font-family: "Mauseo Bold", sans-serif;;
+
+}
+
+
